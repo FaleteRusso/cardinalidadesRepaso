@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -23,4 +23,29 @@ public class Barco {
     @ManyToOne
     @JoinColumn(name = "dni",nullable = false,foreignKey = @ForeignKey(name = "FK_barcos_socios"))
     private Socio socio;
+
+    @Override
+    public String toString() {
+        return "Barco{" +
+                "matricula='" + matricula + '\'' +
+                ", amarre=" + amarre +
+                ", nombre='" + nombre + '\'' +
+                ", cuota=" + cuota +
+                '}';
+    }
+
+    public Barco(String matricula, int amarre, String nombre, double cuota) {
+        this.matricula = matricula;
+        this.amarre = amarre;
+        this.nombre = nombre;
+        this.cuota = cuota;
+    }
+
+    public Socio getSocio() {
+        return socio;
+    }
+
+    public void setSocio(Socio socio) {
+        this.socio = socio;
+    }
 }

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ISocioServicio extends JpaRepository<Socio,String> {
+public interface ISocioServicio {
     List<Socio>mostrarTodos();
     Socio mostrarUno(String dni);
     Socio insertar(Socio s1);

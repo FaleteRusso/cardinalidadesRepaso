@@ -9,7 +9,7 @@ import java.security.PrivateKey;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -29,4 +29,21 @@ public class Salida {
     @JoinColumn(name = "dni",nullable = false,foreignKey = @ForeignKey(name = "FK_salidas_patrones"))
     private Patron patron;
 
+    public Salida(int idSalida, LocalDate fSalida, LocalTime hSalida, String destino, Barco barco) {
+        this.idSalida = idSalida;
+        this.fSalida = fSalida;
+        this.hSalida = hSalida;
+        this.destino = destino;
+        this.barco = barco;
+    }
+
+    public void setPatron(Patron patron) {
+        this.patron = patron;
+    }
+
+    public Salida(int idSalida, LocalDate fSalida, LocalTime hSalida) {
+        this.idSalida = idSalida;
+        this.fSalida = fSalida;
+        this.hSalida = hSalida;
+    }
 }

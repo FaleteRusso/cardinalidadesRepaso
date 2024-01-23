@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import java.util.List;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -18,4 +20,26 @@ public class Patron {
     private String nombre;
     @Column(length = 120,nullable = false)
     private String direccion;
+    @OneToMany(mappedBy = "patron",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    List<Salida>s1;
+
+    public Patron(String dni, String nombre, String direccion) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.direccion = direccion;
+    }
+
+    public void setS1(List<Salida> s1) {
+        this.s1 = s1;
+    }
+
+    @Override
+    public String toString() {
+        return "Patron{" +
+                "dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", s1=" + s1 +
+                '}';
+    }
 }
